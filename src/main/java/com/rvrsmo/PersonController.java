@@ -1,14 +1,16 @@
 package com.rvrsmo;
 
-import java.util.concurrent.atomic.AtomicLong;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.rvrsmo.services.PersonServices;
 
 @RestController
 public class PersonController {
 	
-	private final AtomicLong counter = new AtomicLong();
+	@Autowired
+	private PersonServices service;
 	
 	@RequestMapping
 	public Double sum() {
