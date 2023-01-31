@@ -5,9 +5,11 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.logging.Logger;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.rvrsmo.model.Person;
+import com.rvrsmo.repositories.PersonRepository;
 
 @Service
 public class PersonServices {
@@ -15,6 +17,10 @@ public class PersonServices {
 	private final AtomicLong counter = new AtomicLong();
 	private Logger logger = Logger
 			.getLogger(PersonServices.class.getName());
+	
+	
+	@Autowired
+	PersonRepository repository;
 	
 	
 	public Person create(Person person) {
