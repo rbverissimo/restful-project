@@ -22,6 +22,14 @@ public class PersonServices {
 		return person; 
 	}
 	
+	public Person update(Person person) {
+		logger.info("Updating one person!");
+		return person; 
+	}
+	
+	public void delete(String id) {
+		logger.info("Deleting one person!"); 
+	}
 	
 	
 	public List<Person> findAll() {
@@ -62,5 +70,9 @@ public class PersonServices {
 		return person; 
 	
 	}
+
+
+
+	
 
 }
