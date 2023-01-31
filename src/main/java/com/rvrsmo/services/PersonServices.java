@@ -21,6 +21,7 @@ public class PersonServices {
 	public List<Person> findAll() {
 		List<Person> persons = new ArrayList<>(); 
 		
+		logger.info("Finding all people!!!");
 		for (int i = 0; i < 8; i++) {
 			Person person = mockPerson(i); 
 			persons.add(person);
@@ -46,8 +47,14 @@ public class PersonServices {
 	}
 	
 	private Person mockPerson(int i) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		Person person = new Person();
+		person.setId(counter.incrementAndGet());
+		person.setFirstName("Person name" + i);
+		person.setLastName("Last name" + i);
+		person.setAddress("Address" + i);
+		if(i % 2 == 0) person.setGender("male");  else person.setGender("female");
+		return person; 
 	}
 
 }
