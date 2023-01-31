@@ -1,0 +1,19 @@
+package com.rvrsmo;
+
+import java.util.concurrent.atomic.AtomicLong;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class PersonController {
+	
+	private final AtomicLong counter = new AtomicLong();
+	
+	@RequestMapping
+	public Double sum() {
+		return 0D; 
+	}
+	
+	
+}
