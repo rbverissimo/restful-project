@@ -6,8 +6,8 @@ import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.rvrsmo.data.vo.v1.PersonVO;
 import com.rvrsmo.exception.ResourceNotFoundException;
-import com.rvrsmo.model.Person;
 import com.rvrsmo.repositories.PersonRepository;
 
 @Service
@@ -22,15 +22,15 @@ public class PersonServices {
 	PersonRepository repository;
 	
 	
-	public Person create(Person person) {
+	public PersonVO create(PersonVO person) {
 		logger.info("Creating one person!");
 		return repository.save(person); 
 	}
 	
-	public Person update(Person person) {
+	public PersonVO update(PersonVO person) {
 		logger.info("Updating one person!");
 		
-		Person entity = repository.findById(person.getId())
+		PersonVO entity = repository.findById(person.getId())
 			.orElseThrow(() ->
 				new ResourceNotFoundException("No records found for this ID"));
 		
@@ -45,24 +45,24 @@ public class PersonServices {
 	public void delete(Long id) {
 		logger.info("Deleting one person!"); 
 		
-		Person entity = repository.findById(id)
+		PersonVO entity = repository.findById(id)
 				.orElseThrow(() ->
 					new ResourceNotFoundException("No records found for this ID"));
 		repository.delete(entity);
 	}
 	
 	
-	public List<Person> findAll() {
+	public List<PersonVO> findAll() {
 		
 		logger.info("Finding all people");
 		return repository.findAll();
 	}
 	
 
-	public Person findById(Long id) {
+	public PersonVO findById(Long id) {
 		logger.info("Finding one person!");
 		
-		Person person = new Person();
+		PersonVO person = new PersonVO();
 		person.setFirstName("Leandro");
 		person.setLastName("Costa");
 		person.setAddress("Uberlândia - MG");
@@ -75,10 +75,10 @@ public class PersonServices {
 	
 	
 	@SuppressWarnings("unused")
-	private Person mockPerson(int i) {
-		Person person = new Person();
+	private PersonVO mockPerson(int i) {
+		PersonVO person = new PersonVO();
 		// person.setId(counter.incrementAndGet());
-		person.setFirstName("Person name" + i);
+		person.setFirstName("PersonVO name" + i);
 		person.setLastName("Last name" + i);
 		person.setAddress("Address" + i);
 		if(i % 2 == 0) person.setGender("male");  else person.setGender("female");
