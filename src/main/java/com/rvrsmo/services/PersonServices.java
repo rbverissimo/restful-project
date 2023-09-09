@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.rvrsmo.data.vo.v1.PersonVO;
 import com.rvrsmo.exception.ResourceNotFoundException;
+import com.rvrsmo.model.Person;
 import com.rvrsmo.repositories.PersonRepository;
 
 @Service
