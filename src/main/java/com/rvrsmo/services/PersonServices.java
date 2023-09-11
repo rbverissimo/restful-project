@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.rvrsmo.data.vo.v1.PersonVO;
+import com.rvrsmo.data.vo.v2.PersonVOV2;
 import com.rvrsmo.exception.ResourceNotFoundException;
 import com.rvrsmo.mapper.DozerMapper;
 import com.rvrsmo.model.Person;
@@ -30,6 +31,16 @@ public class PersonServices {
 		var entity = DozerMapper.parseObject(personVO, Person.class);
 		
 		var vo = DozerMapper.parseObject(repository.save(entity), PersonVO.class); 
+		
+		return vo;
+	}
+	
+	public PersonVOV2 createV2(PersonVOV2 personVO) {
+		logger.info("Creating one person with V2!");
+		
+		var entity = DozerMapper.parseObject(personVO, Person.class);
+		
+		var vo = DozerMapper.parseObject(repository.save(entity), PersonVOV2.class); 
 		
 		return vo;
 	}
