@@ -10,6 +10,7 @@ import com.rvrsmo.data.vo.v1.PersonVO;
 import com.rvrsmo.data.vo.v2.PersonVOV2;
 import com.rvrsmo.exception.ResourceNotFoundException;
 import com.rvrsmo.mapper.DozerMapper;
+import com.rvrsmo.mapper.custom.PersonMapper;
 import com.rvrsmo.model.Person;
 import com.rvrsmo.repositories.PersonRepository;
 
@@ -24,6 +25,9 @@ public class PersonServices {
 	@Autowired
 	PersonRepository repository;
 	
+	@Autowired
+	PersonMapper mapper;
+	
 	
 	public PersonVO create(PersonVO personVO) {
 		logger.info("Creating one person!");
@@ -35,12 +39,12 @@ public class PersonServices {
 		return vo;
 	}
 	
-	public PersonVOV2 createV2(PersonVOV2 personVO) {
+	public PersonVOV2 createV2(PersonVOV2 personVOV2) {
 		logger.info("Creating one person with V2!");
 		
-		var entity = DozerMapper.parseObject(personVO, Person.class);
+		var entity = mapper.convertVOtoEntity(personVOV2);
 		
-		var vo = DozerMapper.parseObject(repository.save(entity), PersonVOV2.class); 
+		var vo = mapper.convertEntityToVO(repository.save(entity)); 
 		
 		return vo;
 	}
