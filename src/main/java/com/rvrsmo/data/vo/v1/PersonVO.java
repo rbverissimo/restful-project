@@ -16,10 +16,10 @@ public class PersonVO implements Serializable {
 	
 	private Long id;	
 	
-	@JsonProperty("first_name")
+	@JsonProperty("firstName")
 	private String firstName;	
 	
-	@JsonProperty("last_name")
+	@JsonProperty("lastName")
 	private String lastName;	
 	private String address;	
 	
