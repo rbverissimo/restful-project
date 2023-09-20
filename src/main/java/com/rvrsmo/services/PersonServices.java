@@ -39,15 +39,16 @@ public class PersonServices {
 		return vo;
 	}
 	
-	public PersonVOV2 createV2(PersonVOV2 personVOV2) {
-		logger.info("Creating one person with V2!");
-		
-		var entity = mapper.convertVOtoEntity(personVOV2);
-		
-		var vo = mapper.convertEntityToVO(repository.save(entity)); 
-		
-		return vo;
-	}
+	/*
+	 * public PersonVOV2 createV2(PersonVOV2 personVOV2) {
+	 * logger.info("Creating one person with V2!");
+	 * 
+	 * var entity = mapper.convertVOtoEntity(personVOV2);
+	 * 
+	 * var vo = mapper.convertEntityToVO(repository.save(entity));
+	 * 
+	 * return vo; }
+	 */
 	
 	public PersonVO update(PersonVO personVO) {
 		logger.info("Updating one person!");
