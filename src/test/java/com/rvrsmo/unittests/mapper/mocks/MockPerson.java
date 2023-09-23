@@ -4,12 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.rvrsmo.data.vo.v1.PersonVO;
-import com.rvrsmo.model.Person;
 
 public class MockPerson {
 
 
-    public Person mockEntity() {
+    public PersonVO mockEntity() {
         return mockEntity(0);
     }
     
@@ -17,8 +16,8 @@ public class MockPerson {
         return mockVO(0);
     }
     
-    public List<Person> mockEntityList() {
-        List<Person> persons = new ArrayList<Person>();
+    public List<PersonVO> mockEntityList() {
+        List<PersonVO> persons = new ArrayList<PersonVO>();
         for (int i = 0; i < 14; i++) {
             persons.add(mockEntity(i));
         }
@@ -33,12 +32,12 @@ public class MockPerson {
         return persons;
     }
     
-    public Person mockEntity(Integer number) {
-        Person person = new Person();
+    public PersonVO mockEntity(Integer number) {
+        PersonVO person = new PersonVO();
         person.setAddress("Addres Test" + number);
         person.setFirstName("First Name Test" + number);
         person.setGender(((number % 2)==0) ? "Male" : "Female");
-        person.setId(number.longValue());
+        person.setKey(number.longValue());
         person.setLastName("Last Name Test" + number);
         return person;
     }
@@ -48,7 +47,7 @@ public class MockPerson {
         person.setAddress("Addres Test" + number);
         person.setFirstName("First Name Test" + number);
         person.setGender(((number % 2)==0) ? "Male" : "Female");
-        person.setId(number.longValue());
+        person.setKey(number.longValue());
         person.setLastName("Last Name Test" + number);
         return person;
     }

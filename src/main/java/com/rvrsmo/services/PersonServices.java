@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.rvrsmo.data.vo.v1.PersonVO;
-import com.rvrsmo.data.vo.v2.PersonVOV2;
 import com.rvrsmo.exception.ResourceNotFoundException;
 import com.rvrsmo.mapper.DozerMapper;
 import com.rvrsmo.mapper.custom.PersonMapper;
@@ -53,7 +52,7 @@ public class PersonServices {
 	public PersonVO update(PersonVO personVO) {
 		logger.info("Updating one person!");
 		
-		var entity = repository.findById(personVO.getId())
+		var entity = repository.findById(personVO.getKey())
 			.orElseThrow(() ->
 				new ResourceNotFoundException("No records found for this ID"));
 		
