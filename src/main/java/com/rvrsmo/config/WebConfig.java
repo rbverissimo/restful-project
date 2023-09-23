@@ -7,6 +7,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
+	
+	private static MediaType MEDIA_TYPE_APPLICATION_YAML =
+			MediaType.valueOf("application/x-yaml");
 
 	// VIA QUERY PARAM. http://localhost:8080/api/person/v1?mediaType=xml
 	@Override
@@ -27,7 +30,8 @@ public class WebConfig implements WebMvcConfigurer {
 			.useRegisteredExtensionsOnly(false)
 			.defaultContentType(MediaType.APPLICATION_JSON)
 			.mediaType("json", MediaType.APPLICATION_JSON)
-			.mediaType("xml", MediaType.APPLICATION_XML);
+			.mediaType("xml", MediaType.APPLICATION_XML)
+			.mediaType("x-yaml", MEDIA_TYPE_APPLICATION_YAML);
 	}
 	
 	

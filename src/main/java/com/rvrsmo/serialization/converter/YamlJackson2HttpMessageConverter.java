@@ -12,13 +12,11 @@ public class YamlJackson2HttpMessageConverter extends AbstractJackson2HttpMessag
 
 	protected YamlJackson2HttpMessageConverter(ObjectMapper objectMapper) {
 		
-		/*
-		 * super(new YAMLMapper() .setSerializationInclusion(
-		 * JsonInclude.Include.NON_NULL),
-		 * MediaType.parseMediaTypes("application/x-yaml"));
-		 */
-		 super(objectMapper);
-		// TODO Auto-generated constructor stub
+		
+		  super(new YAMLMapper().setSerializationInclusion
+				  (JsonInclude.Include.NON_NULL),
+		  MediaType.parseMediaType("application/x-yaml"));
+
 	}
 	
 	
