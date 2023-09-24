@@ -36,7 +36,11 @@ public class PersonServices {
 		
 		var entity = DozerMapper.parseObject(personVO, Person.class);
 		
-		var vo = DozerMapper.parseObject(repository.save(entity), PersonVO.class); 
+		var vo = DozerMapper.parseObject(repository.save(entity), PersonVO.class);
+		
+		vo.add(linkTo(methodOn(PersonController.class)
+				.create(personVO))
+				.withSelfRel());
 		
 		return vo;
 	}
@@ -65,6 +69,10 @@ public class PersonServices {
 		entity.setGender(personVO.getGender());
 		
 		var vo = DozerMapper.parseObject(repository.save(entity), PersonVO.class); 
+		
+		vo.add(linkTo(methodOn(PersonController.class)
+				.create(personVO))
+				.withSelfRel());
 		
 		return vo;
 	}
