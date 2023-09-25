@@ -39,7 +39,7 @@ public class PersonServices {
 		var vo = DozerMapper.parseObject(repository.save(entity), PersonVO.class);
 		
 		vo.add(linkTo(methodOn(PersonController.class)
-				.create(personVO))
+				.findById(vo.getKey()))
 				.withSelfRel());
 		
 		return vo;
@@ -71,7 +71,7 @@ public class PersonServices {
 		var vo = DozerMapper.parseObject(repository.save(entity), PersonVO.class); 
 		
 		vo.add(linkTo(methodOn(PersonController.class)
-				.create(personVO))
+				.findById(vo.getKey()))
 				.withSelfRel());
 		
 		return vo;
@@ -90,7 +90,15 @@ public class PersonServices {
 	public List<PersonVO> findAll() {
 		
 		logger.info("Finding all people");
-		return DozerMapper.parseListObjects(repository.findAll(), PersonVO.class);
+		var persons = DozerMapper
+				.parseListObjects(repository.findAll(), PersonVO.class);
+		
+		persons.stream().forEach(e -> {
+			e.add(linkTo(methodOn(PersonController.class)
+					.findById(e.getKey())).withSelfRel());
+		});
+		
+		return persons;
 	}
 	
 
@@ -101,7 +109,7 @@ public class PersonServices {
 				.orElseThrow(() -> 
 					new ResourceNotFoundException("No records found for this ID")); 
 		
-		PersonVO vo =  DozerMapper.parseObject(entity, PersonVO.class);
+		var vo =  DozerMapper.parseObject(entity, PersonVO.class);
 		
 		vo.add(linkTo(methodOn(PersonController.class)
 				.findById(id))
