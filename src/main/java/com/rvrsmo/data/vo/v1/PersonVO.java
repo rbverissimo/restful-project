@@ -24,7 +24,8 @@ public class PersonVO extends RepresentationModel<PersonVO> implements Serializa
 	private String firstName;	
 	
 	@JsonProperty("lastName")
-	private String lastName;	
+	private String lastName;
+	
 	private String address;	
 	
 	// @JsonIgnore
