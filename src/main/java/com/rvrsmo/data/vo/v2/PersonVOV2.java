@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.Objects;
 
 
+@Deprecated
 public class PersonVOV2 implements Serializable {
 
 	
